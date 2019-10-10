@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "WEATHER";
+}
+
+<h2>WEATHER</h2>
+
+<p id="name">     </p>
+<p id="temp">     </p>
+<p id="humidty">  </p>
+<button> Get weather details</button>
+
+
+<script>
+
+    $(document).ready(function () {
+
+
+
+    $("button").click(function () {
+
+        $.get("http://api.openweathermap.org/data/2.5/weather?q=London&APPID=ab7f3db272e45d0a540b36e3c02ad99b&units=imperial", function (response) {
+        console.log(response);
+        $("name").text(response.name);
+        $("temp").text(response.main.temp);
+        $("humidty").text(response.main.humidity);
+
+                               });
+    });
+    });
+
+
+
+
+</script>

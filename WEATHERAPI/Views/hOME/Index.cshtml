@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div style="text-align:center">
+    <h2>Weather Detail by RESTFUL-API </h2>
+
+    <h4> City Name</h4>             <p id="name"> </p>
+    <h4> Temprature </h4>           <p id="temp">  </p>
+    <h4> Humidity level</h4>        <p id="humidity">  </p>
+    <h4> pressure</h4>              <p id="pressure">  </p>
+    <h4> clouds</h4>                <p id="clouds">  </p>
+    <h4> wind</h4>                  <p id="wind">  </p>
+
+    <button> Get weather details</button>
+
+</div>
+<script>
+
+    $(document).ready(function () {
+
+
+
+        $("button").click(function () {
+
+            $.get("http://api.openweathermap.org/data/2.5/weather?q=Faisalabad&APPID=ab7f3db272e45d0a540b36e3c02ad99b&units=imperial", function (response) {
+                console.log(response);
+                $("#name").text(response.name);
+                $("#temp").text(response.main.temp);
+                $("#humidity").text(response.main.humidity);
+                $("#pressure").text(response.main.pressure);
+
+                $("#clouds").text(response.clouds.all);
+
+                $("#wind").text(response.wind.speed);
+
+            });
+        });
+    });
+
+
+
+
+</script>
